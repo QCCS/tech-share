@@ -1,0 +1,17 @@
+{
+  "name": "tech-share",
+  "version": "1.0.0",
+  "description": "share somethine",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "es",
+    "babel",
+    "javascript",
+    "node"
+  ],
+  "author": "zhouli",
+  "license": "MIT"
+}
