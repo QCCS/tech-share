@@ -76,5 +76,40 @@ webpack集成了dev-server可以做到这一点
 ```
 git checkout share3
 ```
+
+
+```
+npm install -g babel-cli
+npm install babel-preset-es2015 --save-dev
+
+```
+添加.babelrc
+{
+  "presets": ["es2015"],
+  "plugins": []
+}
+这样可以写es6
+```
+//package.json添加
+"build": "babel src/index.js -o dist/index.js"
+```
+编辑器配置es6
+
+添加es7语法功能
+有不同的阶段，语法有稍微区别
+可以选择一个节点的编译依赖
+```
+npm install --save-dev babel-preset-stage-0
+npm install --save-dev babel-preset-stage-1
+npm install --save-dev babel-preset-stage-2
+npm install --save-dev babel-preset-stage-3
+```
+{
+  "presets": ["es2015", "stage-0"],
+  "plugins": []
+}
+
+安装 babel-react
+
 --
 
