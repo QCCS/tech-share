@@ -58,3 +58,21 @@ gulp与grunt写法不大一样，功能差不多，
 
 官方网站可以用这种方式
 
+---
+
+上面react文件没有压缩，是因为依赖babel编译
+虽然页面中应入babel编译，也可以支持es6语法，但是对于工程流程化不方便管理
+
+目前这个浏览器普遍能解析编译es5,我们想写es6，或者react,并且在浏览器实时预览，就需要
+把写的es6语言编译为es5,再用浏览器看
+可以借助node开启服务，websock实时监听服务响应，
+这个服务可以自己用node搭建
+
+webpack集成了dev-server可以做到这一点
+
+下面开始用npm 安装babel react webpack
+```
+git checkout share3
+```
+--
+
