@@ -1,0 +1,10 @@
+#header{
+    height: 50px;
+}
+#content{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#footer{
+    min-height: 50px;
+}
