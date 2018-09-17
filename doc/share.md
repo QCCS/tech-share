@@ -138,9 +138,47 @@ babel编译是编译，就是把es6，es7转换为es5，
 git checkout share4
 
 
+npm install --save-dev webpack
 
 
+添加 webpack.config.js，配置文件
+输入命令,会自动找到配置文件执行，根据版本不一样，会提示安装webpack-cli命令行工具
+```
+webpack
+```
 
+只是安装了webpack ,没有安装react等相关依赖，可以先把index.js其他语言注释
+运行命令，就可以打包成功
+
+----
+
+然后把react jsx语法写入，webpack就不认识了，就需要配置loader
+怎么配置呢，官网看看
+webpack -v
+3.8.1
+
+先要安装loader
+npm install babel-loader@7 --save
+
+加入配置
+```
+module: {
+    rules:[
+        {
+            test:/\.jsx?$/,
+            exclude: /node_modules/,
+            use: [{
+                loader: "babel-loader",
+                options: { presets: ["react","es2015","stage-0"] }
+            }],
+        },
+    ]
+}
+```
+
+由于之前一直没有安装react，react-dom这里就要报找不到模块
+
+这里放下一个分支安装模块
 
 --
 

@@ -19,9 +19,8 @@ car1.getInfo();
 
 var car2 = new Car("XOX", 100000);
 
-
-//这里用es6，jsx，语法写，可以编译，但是浏览器会报错说是require没有定义
-//就是因为新版的babel有一些关键字不会深入编译，只是简单翻译，需要借助模块打包工具
+//webpack是不认识react,jsx,语法，依赖loader去解析
+//所有要配置loader
 ReactDOM.render(
     <h1>
         <span>Hello, world!</span>
