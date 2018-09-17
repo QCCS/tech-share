@@ -104,12 +104,43 @@ npm install --save-dev babel-preset-stage-1
 npm install --save-dev babel-preset-stage-2
 npm install --save-dev babel-preset-stage-3
 ```
+配置文件中可以加入stage-0，来支持es7的语法
+```
 {
   "presets": ["es2015", "stage-0"],
   "plugins": []
 }
+```
+这里可以看看node_modules里面babel依赖了哪些模块
 
-安装 babel-react
+当准备要在项目中写react的时候，需要先安装
+babel对jsx语法的编译包
+
+npm install --save-dev babel-preset-react
+
+可以在.babelrc中加入
+代表babel编译的时候，把项目中的jsx也编译了，不然
+打包的时候，项目会不认识react的jsx语法
+```
+"presets": ["es2015", "stage-0","react"],
+```
+加入这样配置之后，就可以用jsx语法写，babel依然可以编译为es5
+
+
+#这个地方就要注意了
+babel编译是编译，就是把es6，es7转换为es5，
+但是有一些默认的语法是不会编译的 比如import
+就直接编译为require，这样浏览器是不会认识的，
+当然可以解决，引入比较老的babel包，就可以直接编译为浏览器认识的语法
+也可以引入打包工具，webpack；
+
+安装webpack
+git checkout share4
+
+
+
+
+
 
 --
 
