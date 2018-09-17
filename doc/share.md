@@ -234,7 +234,39 @@ sass，scss，less，stylus等等loader就不这里安装了，
 
 ```
 git checkout -b share6
+npm install --save-dev webpack-dev-server 
 ```
 
---
+运行dev-server多说两句
+```
+webpack-dev-server
+```
+直接运行，由于不是全局安装，命令行找不到对应的bin执行目录，会报错
+
+可以这样运行，输入命令
+```
+node_modules/.bin/webpack-dev-server
+```
+会找到当前目录的依赖模块的执行命令
+也可以在配置package.json
+```
+"scripts": {
+    "server": "webpack-dev-server --open"
+  }
+```
+自此安装了
+webpack
+babel-loader es6,es7,jsx-react
+css-loader
+file-loader
+devServer
+简单项目开发就可以直接
+
+然后稍微整理为一个简单的webpack+es6+react+css+devServer的开发脚手架
+```
+git checkout -b share7
+
+```
+
+
 

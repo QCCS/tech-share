@@ -26,7 +26,7 @@ ReactDOM.render(
     <h1>
         <span>Hello, world!</span>
         <img src={imgSrc}/>
-        <Tags tags={["tag1","tag2"]}></Tags>
+        <Tags tags={["tag1","tag22"]}></Tags>
     </h1>,
     document.getElementById('body')
 );

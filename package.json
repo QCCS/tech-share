@@ -6,6 +6,7 @@
   "scripts": {
     "test": "test",
     "webpack": "webpack",
+    "server": "webpack-dev-server --open",
     "build": "babel src/index.js -o dist/index.js"
   },
   "keywords": [
@@ -23,7 +24,8 @@
     "file-loader": "^2.0.0",
     "style-loader": "^0.23.0",
     "webpack": "^4.19.0",
-    "webpack-cli": "^3.1.0"
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
   },
   "author": "zhouli",
   "license": "MIT",
