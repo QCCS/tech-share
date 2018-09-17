@@ -176,9 +176,65 @@ module: {
 }
 ```
 
+
+
+
 由于之前一直没有安装react，react-dom这里就要报找不到模块
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+```
+
 
 这里放下一个分支安装模块
+
+```
+git checkout -b share5
+
+npm i -save react react-dom
+```
+为了能讲明白这些，我是分很多步骤来操作的
+安装之后就可以用webpack打包了
+
+--
+但是还没法用模块加载的方式写样式
+import ‘./css/index.css’
+
+一样依赖loader
+```
+npm install --save-dev css-loader
+```
+如果不安装或者不配置css-loader，加载进入的css语法，就像之前没有安装与配置babel-loader一样；
+
+webpack不会认识，直接报错
+安装了css-loader只是认识css语法不报错
+还需要
+style-loader
+```
+npm install --save-dev style-loader
+```
+这样才能把样式加载的html里面，让css生效
+
+网页中还需要加载图片
+需要安装file-loader
+```
+npm install --save-dev file-loader
+```
+各种各样的loader
+可以到官方网站查看，安装与配置方式
+https://www.webpackjs.com/loaders/file-loader/
+
+sass，scss，less，stylus等等loader就不这里安装了，
+之后需要就安装
+
+
+但是到这一步，每次打包完，刷新一下浏览器，比较麻烦
+安装一下devserver
+实时刷新浏览器
+
+```
+git checkout -b share6
+```
 
 --
 

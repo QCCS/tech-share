@@ -1,6 +1,7 @@
 /**
  * Created by zhouli on 18/9/17
  */
+import React from 'react';
 //标签显示的组件
 class Tags extends React.Component {
     constructor(){
@@ -9,7 +10,7 @@ class Tags extends React.Component {
             data: ''
         }
     }
-    componentDidMount = () =>{
+    componentDidMount(){
         console.log("componentDidMount")
     }
     clickTag = () => {

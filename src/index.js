@@ -4,6 +4,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Tags from './js/react-components/tag';
+import './css/index.css';
+import imgSrc from './assets/images/es.png';
 class Car {
     constructor(maker, price) {
         this.maker = maker;
@@ -19,11 +21,11 @@ car1.getInfo();
 
 var car2 = new Car("XOX", 100000);
 
-//webpack是不认识react,jsx,语法，依赖loader去解析
-//所有要配置loader
+
 ReactDOM.render(
     <h1>
         <span>Hello, world!</span>
+        <img src={imgSrc}/>
         <Tags tags={["tag1","tag2"]}></Tags>
     </h1>,
     document.getElementById('body')
