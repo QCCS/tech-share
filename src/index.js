@@ -6,7 +6,9 @@ import ReactDOM from 'react-dom';
 import App from './app';
 import './css/index.css';
 import './css/reset.css';
-
+import { BrowserRouter as Router} from "react-router-dom";
 ReactDOM.render(
-    <App layout={"LR"}/>, document.getElementById('body')
+    <Router>
+        <App layout={"LR"}/>
+    </Router>, document.getElementById('body')
 );

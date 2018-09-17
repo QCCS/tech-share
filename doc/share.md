@@ -276,5 +276,20 @@ git checkout -b share8
 
 ```
 
+要在header上添加三个路由
+首页，列表，详情，关于
+react-router 4.x已经拆分为几个包其中react-router-dom 可以设置路由了
+文档
+https://reacttraining.com/react-router/web/example/basic
 
+npm install --save react-router-dom 
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+router安装好了
+
+页面很难看，css又懒得写，安装UI框架
+安装ant-design
+git checkout -b share9
+
+安装materail-design
+git checkout -b share10
