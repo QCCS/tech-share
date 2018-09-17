@@ -1,0 +1,17 @@
+.left-right-wrap{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.left-right-wrap .left {
+    float: left;
+    width: 220px;
+    background-color: green;
+    min-height: 200px;
+}
+
+.left-right-wrap .right {
+    background-color: orange;
+    margin-left: 220px;
+    min-height: 200px;
+}
+

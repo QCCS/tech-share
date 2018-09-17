@@ -267,6 +267,14 @@ devServer
 git checkout -b share7
 
 ```
+简单的布局好了，
+发现开发单页面，需要路由，没有路由，前端就一个，不方便实现
+
+```
+//安装路由
+git checkout -b share8
+
+```
 
 
 
