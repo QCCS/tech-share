@@ -234,7 +234,7 @@ class HeaderContent extends React.Component {
 
 
                     <Slide direction="up" in={checkedPhone} mountOnEnter unmountOnExit>
-                        <Paper elevation={4} className={classes.paper}>
+                        <Paper elevation={2} className={classes.paper}>
                             <div className={classes.paperInner}>Phone</div>
                         </Paper>
                     </Slide>
