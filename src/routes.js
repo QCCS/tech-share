@@ -5,14 +5,15 @@ import React from 'react';
 import LeftRight from './js/layout/left-right';
 import Tags from './js/react-components/tag';
 import LeftMiddleRight from './js/layout/left-middle-right';
-import {Route,Link} from "react-router-dom";
+import {Route} from "react-router-dom";
 import ComponentsMd from './js/pages/components-test/components-md';
-
+import SideNavList from './js/react-components/side-nav/side-nav-list';
+import MiniDrawer from './js/pages/components-test/mini-drawer';
+import ListOne from './js/pages/list/one';
 //渲染路由关系
 function routerRender() {
     
 }
-
 
 const Home = () => (
     <div>
@@ -26,31 +27,14 @@ const Home = () => (
 const list = ({ match }) => (
     <div>
         <LeftRight left={<div>
-            <h1>几个子路由</h1>
-            <ul>
-                <li>
-                    <Link exact to={`${match.url}`}>zero</Link>
-                </li>
-                <li>
-                    <Link to={`${match.url}/one`}>one</Link>
-                </li>
-                <li>
-                    <Link to={`${match.url}/two`}>two</Link>
-                </li>
-                <li>
-                    <Link to={`${match.url}/three`}>three</Link>
-                </li>
-                <li>
-                    <Link to={`${match.url}/components-md`}>components-md</Link>
-                </li>
-            </ul>
+            <SideNavList match={match}></SideNavList>
         </div>}
                    right={<div>
                        <Route path={`${match.url}/:listId`} component={listDetail} />
                        <Route
                            exact
                            path={match.url}
-                           render={() => <h3>默认详情</h3>}
+                           render={() => <MiniDrawer/>}
                        />
                    </div>}
         />
@@ -62,11 +46,12 @@ const listDetail = (match) => {
     let listId = match.match.params.listId;
     return <div>
         listDetail {match.match.params.listId}
+        {listId==="one"&&<ListOne></ListOne>}
         {listId==="components-md"&&<ComponentsMd></ComponentsMd>}
     </div>
 };
 const about = () => (
-    <div>
+    <div style={{height:200}}>
         about
     </div>
 );

@@ -306,6 +306,9 @@ npm install @material-ui/icons --save
  
  //字体图标直接应入
  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ 
+ //图标查看
+ https://www.materialui.co/icons
 ```
 浏览器兼容性没有antd好，ie>11,,,,,其他的都可以看网站介绍
 
@@ -326,3 +329,10 @@ git checkout -b share11
 左侧导航
 header
 
+---
+
+改造完成，安装redux
+```
+git checkout -b share12
+```
+新看看react 16跨组件通信context，与全局状态管理

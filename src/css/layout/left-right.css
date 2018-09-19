@@ -10,8 +10,12 @@
 }
 
 .left-right-wrap .right {
-    background-color: orange;
+    background-color: darkseagreen;
     margin-left: 220px;
     min-height: 200px;
+    padding: 6px;
+}
+.left-right-wrap .clear{
+    clear: both;
 }
 

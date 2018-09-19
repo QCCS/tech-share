@@ -4,8 +4,19 @@
 import React from 'react';
 import Header from './js/react-components/header';
 import Footer from './js/react-components/footer';
-import { Link } from "react-router-dom";
-import Routes from "./routes"
+import Routes from "./routes";
+import { withStyles } from '@material-ui/core/styles';
+import HeaderContent from './js/react-components/header-content/header-content';
+
+import SingleLineGridList from './js/pages/components-test/single-line-grid-list';
+
+const styles = theme => ({
+    root: {
+        width: '100%',
+        height: 50
+    },
+});
+
 class App extends React.Component {
     constructor() {
         super();
@@ -16,18 +27,13 @@ class App extends React.Component {
     render = () => {
         return ( <div>
             <Header>
-                <Link to="/">Home</Link>&nbsp;|&nbsp;
-                <Link to="/list">list</Link>&nbsp;|&nbsp;
-                <Link to="/about">about</Link>
-
+                <HeaderContent/>
             </Header>
-
             <Routes/>
             <Footer>
-                这是Footer
+                <SingleLineGridList/>
             </Footer>
         </div> )
     }
 }
-
-export default App;
+export default withStyles(styles)(App);

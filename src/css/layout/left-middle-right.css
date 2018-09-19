@@ -24,3 +24,6 @@
     color: #fdf6e3;
     float: right;
 }
+.left-middle-right-wrap .clear{
+    clear: both;
+}

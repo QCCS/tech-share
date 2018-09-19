@@ -18,6 +18,7 @@ class LeftMiddleRight extends React.Component {
             <div class="center">
                 {this.props.middle}
             </div>
+            <div className="clear"></div>
         </div> )
     }
 }

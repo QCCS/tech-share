@@ -1,13 +1,13 @@
 /**
  * Created by zhouli on 18/9/19
  */
+/**
+ * Created by zhouli on 18/9/19
+ */
 import React from 'react';
-import '../../../css/pages/components-test/components-md.css';
-import Button from '@material-ui/core/Button';
+import '../../../css/pages/list/one.css';
 import Icon from '@material-ui/core/Icon';
 import { withStyles } from '@material-ui/core/styles';
-
-import { AccessAlarm, ThreeDRotation } from '@material-ui/icons';
 
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -15,9 +15,10 @@ import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
-import CustomPaginationActionsTable from './table-pagination-actions';
-import ScrollableTabsButtonForce from './scrollable-tabs-button-force';
-import ListItemComposition from './side-nav';
+import CustomPaginationActionsTable from '../components-test/table-pagination-actions';
+import ScrollableTabsButtonForce from '../components-test/scrollable-tabs-button-force';
+import ListItemComposition from '../components-test/side-nav';
+import ControlledExpansionPanels from '../components-test/controlled-expansion-panels';
 const styles = theme => ({
     root: {
         display: 'flex',
@@ -34,7 +35,7 @@ const styles = theme => ({
         },
     },
 });
-class ComponentsMd extends React.Component {
+class ListOne extends React.Component {
     constructor(){
         super();
         this.state = {
@@ -51,23 +52,11 @@ class ComponentsMd extends React.Component {
     render = () => {
         const { value } = this.state;
         return (<div className="components-md-wrap">
-            <Button variant="raised" color="primary">
-                Hello World
-            </Button>
-            <br/>
-            svg图标
-            <div>
-                <AccessAlarm/>
-                <ThreeDRotation/>
+            <h2>Expansion</h2>
+            <div className="expansion-test">
+                <ControlledExpansionPanels/>
             </div>
-
-            <br/>
-            字体图标引入
-            <div>
-                <Icon>add_circle</Icon>
-            </div>
-
-            底部导航
+            <h2>底部导航</h2>
             <div className="nav-test">
                 <BottomNavigation value={value} onChange={this.handleChange} >
                     <BottomNavigationAction label="Recents" value="recents" icon={<RestoreIcon />} />
@@ -76,19 +65,19 @@ class ComponentsMd extends React.Component {
                     <BottomNavigationAction label="Folder" value="folder" icon={<Icon>folder</Icon>} />
                 </BottomNavigation>
             </div>
-            表格
+            <h2>表格</h2>
             <div className="table-test">
                 <CustomPaginationActionsTable></CustomPaginationActionsTable>
             </div>
-            tab
+            <h2>Tab</h2>
             <div className="tab-test">
                 <ScrollableTabsButtonForce></ScrollableTabsButtonForce>
             </div>
-            menus
+            <h2>Menus</h2>
             <div className="menus-test">
                 <ListItemComposition></ListItemComposition>
             </div>
         </div> )
     }
 }
-export default withStyles(styles)(ComponentsMd);
+export default withStyles(styles)(ListOne);
