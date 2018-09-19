@@ -293,3 +293,36 @@ git checkout -b share9
 
 安装materail-design
 git checkout -b share10
+materail-design react版本可能版本比较多，
+https://material-ui.com/这个网站介绍比较全
+
+```
+npm install @material-ui/core --save
+//使用svg图标
+npm install @material-ui/icons --save
+
+//安装之前注意也是有依赖的
+ react >= 16.3.0 and react-dom >= 16.3.0
+ 
+ //字体图标直接应入
+ <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+```
+浏览器兼容性没有antd好，ie>11,,,,,其他的都可以看网站介绍
+
+安装之后，就可以根据例子使用了
+还是写一个页面来测试测试组件
+
+安装一个属性校验的库
+```
+npm install --save prop-types
+```
+
+测试组件之后,用md
+改造网站
+
+```
+git checkout -b share11
+```
+左侧导航
+header
+

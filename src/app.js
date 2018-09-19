@@ -19,7 +19,9 @@ class App extends React.Component {
                 <Link to="/">Home</Link>&nbsp;|&nbsp;
                 <Link to="/list">list</Link>&nbsp;|&nbsp;
                 <Link to="/about">about</Link>
+
             </Header>
+
             <Routes/>
             <Footer>
                 这是Footer
