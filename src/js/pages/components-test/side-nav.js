@@ -12,6 +12,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import SendIcon from '@material-ui/icons/Send';
+import appContextTwo from '../../global-data/app-context-two';
 
 const styles = theme => ({
     menuItem: {
@@ -29,8 +30,17 @@ const styles = theme => ({
 function ListItemComposition(props) {
     const { classes } = props;
 
+    function getContextTest(context) {
+        console.log(context)
+    }
+
     return (
         <Paper>
+            <appContextTwo.Consumer>
+                {context => (
+                    <div onClick={()=>{getContextTest(context)}}>get global context data</div>
+                )}
+            </appContextTwo.Consumer>
             <MenuList>
                 <MenuItem className={classes.menuItem}>
                     <ListItemIcon className={classes.icon}>

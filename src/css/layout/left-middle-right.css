@@ -4,8 +4,8 @@
 }
 .left-middle-right-wrap .left{
     width: 300px;
-    min-height: 100px;
-    background-color: #823384;
+    min-height: 800px;
+    background-color: #485cbd;
     text-align: center;
     font-size: 20px;
     color: #fdf6e3;
@@ -13,12 +13,13 @@
 }
 .left-middle-right-wrap .center{
     min-height: 100px;
-    background-color: #d29922;
+    background-color: #0895cc;
+    padding: 10px 310px;
 }
 .left-middle-right-wrap .right{
     width: 300px;
     min-height: 100px;
-    background-color: #0c8ac5;
+    background-color: #f60362;
     text-align: center;
     font-size: 20px;
     color: #fdf6e3;

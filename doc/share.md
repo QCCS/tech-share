@@ -318,6 +318,7 @@ npm install @material-ui/icons --save
 安装一个属性校验的库
 ```
 npm install --save prop-types
+//(注:从React v15.5开始 ，React.PropTypes 助手函数已被弃用，可使用 prop-types 库 来定义contextTypes)
 ```
 
 测试组件之后,用md
@@ -335,4 +336,74 @@ header
 ```
 git checkout -b share12
 ```
-新看看react 16跨组件通信context，与全局状态管理
+先看看react 16跨组件通信context，与全局状态管理
+新版本的React context使用了Provider和Customer模式，和redux-react的模式非常像。
+
+#context 提供者与消费者
+
+父组件 提供者
+// 声明要提供到Context的对象属性
+//必须定义 getChildContext 方法，返回需要提供的数据
+```
+LeftMiddleRight.childContextTypes = {
+    lmrContextData: PropTypes.object
+};
+getChildContext(){
+    return {
+        lmrContextData:{
+            data:"lmr-data"
+        }  
+    }
+}
+```
+子组件消费者
+```
+static contextTypes = {
+lmrContextData: PropTypes.object,
+}
+```
+这样子，子组件就拿到了父组件，lmrContextData
+父组件没有定义这个，子组件获取不到，就是undefined
+
+---
+
+新增的react中，我创建一个应用的上下文数据
+```
+//注意最好不要多次创建（但是可以），不然在消费的时候很难找到 appContext 对应的值
+const appContext = React.createContext({
+  data1: 'data1',
+  data2: 'data2'
+});
+//单独一个文件创建，导出
+```
+
+```
+导入appContext
+<appContext.Provider value={{data1: 'data3', data2: 'data4'}}>
+<Header />
+</appContext.Provider>
+//Provider 的 value就是直接设置 上下文的值
+//value={this.state.theme}
+```
+在header组件内部(子组件)
+```
+
+//必须加上 appContext.Consumer
+//且子节点必须是函数，不然报错，说不说一个function
+导入appContext
+<appContext.Consumer>
+{context => (
+  <div onClick={()=>{this.getContextTest(context)}}>get parent context data</div>
+)}
+</appContext.Consumer>
+```
+可以把context中的属性，与提供属性值的函数传递到子组件，
+这样可以自己调用子组件，就会改变上下文的值
+以上主要讲解新版context
+----
+
+便于理解单独一个分支安装react-redux
+```
+git checkout -b share13
+```
+

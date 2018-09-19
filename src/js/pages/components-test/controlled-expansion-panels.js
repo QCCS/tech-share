@@ -9,7 +9,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
+import appContext from '../../global-data/app-context';
 const styles = theme => ({
     root: {
         width: '100%',
@@ -26,6 +26,10 @@ const styles = theme => ({
 });
 
 class ControlledExpansionPanels extends React.Component {
+    constructor(props, context){
+        super()
+        console.log(context)
+    }
     state = {
         expanded: null,
     };
@@ -36,13 +40,25 @@ class ControlledExpansionPanels extends React.Component {
         });
     };
 
+    getContextTest=(appContext)=>{
+        console.log(appContext)
+        console.log(this.context)
+        let _context = Object.assign(appContext,this.context)
+        console.log(_context)
+    }
     render() {
         const { classes } = this.props;
         const { expanded } = this.state;
 
         return (
             <div className={classes.root}>
-                <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
+                <appContext.Consumer>
+                    {context => (
+                        <div onClick={()=>{this.getContextTest(context)}}>get parent context data</div>
+                    )}
+                </appContext.Consumer>
+                <ExpansionPanel expanded={expanded === 'panel1'}
+                                onChange={this.handleChange('panel1')}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                         <Typography className={classes.heading}>General settings</Typography>
                         <Typography className={classes.secondaryHeading}>I am an expansion panel</Typography>
@@ -54,6 +70,7 @@ class ControlledExpansionPanels extends React.Component {
                         </Typography>
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
+
                 <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handleChange('panel2')}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                         <Typography className={classes.heading}>Users</Typography>
@@ -101,5 +118,11 @@ class ControlledExpansionPanels extends React.Component {
 ControlledExpansionPanels.propTypes = {
     classes: PropTypes.object.isRequired,
 };
+ControlledExpansionPanels.contextTypes = {
+    router:PropTypes.object,//router内部有定义
+    myContextData: PropTypes.object,//没定义
+    lmrContextData: PropTypes.object//在left-middle-right中定义
+};
+
 
 export default withStyles(styles)(ControlledExpansionPanels);
