@@ -287,9 +287,38 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 router安装好了
 
+-----
+
 页面很难看，css又懒得写，安装UI框架
 安装ant-design
+```
 git checkout -b share9
+npm install antd --save
+//安装是最新版本
+//antd": "^3.9.2",
+//会有一些依赖，比如react1.6,如果没有安装,npm 可能会提示
+```
+安装之后根据网站提示
+把样式引入，就可以使用了
+然后我来添加一个文件夹，pages写个页面，先来看看组件
+组件ComponentsTest，对应路由list/components
+因为写页面了，要实时看见页面变化，可以配置一下热部署
+```
+const webpack = require('webpack');
+... ... 中间省略
+devServer: {
+    contentBase: './src',//默认本地服务器在跟目录
+    historyApiFallback: true,//不跳转，默认会跳转且都跳到index.html上
+    inline: true,//源文件改变时刷新页面
+    hot: true,//热编译
+    port: 8085//更改端口号，默认8080
+},
+... ... 中间省略
+plugins: [
+    new webpack.HotModuleReplacementPlugin()
+]
+```
 
+然后保存代码，回到 git checkout share8
 安装materail-design
 git checkout -b share10

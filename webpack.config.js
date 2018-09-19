@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 module.exports = {
     entry: __dirname + '/src/index.js',//入口文件
     output: {
@@ -8,6 +9,7 @@ module.exports = {
         contentBase: './src',//默认本地服务器在跟目录
         historyApiFallback: true,//不跳转，默认会跳转且都跳到index.html上
         inline: true,//源文件改变时刷新页面
+        hot: true,//热编译
         port: 8085//更改端口号，默认8080
     },
     module: {
@@ -35,5 +37,8 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ]
 }

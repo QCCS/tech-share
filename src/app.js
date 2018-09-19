@@ -6,11 +6,11 @@ import Header from './js/react-components/header';
 import Footer from './js/react-components/footer';
 import { Link } from "react-router-dom";
 import Routes from "./routes"
+
 class App extends React.Component {
     constructor() {
         super();
     }
-
     componentDidMount() {
     }
     render = () => {

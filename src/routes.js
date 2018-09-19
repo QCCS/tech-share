@@ -6,13 +6,18 @@ import LeftRight from './js/layout/left-right';
 import Tags from './js/react-components/tag';
 import LeftMiddleRight from './js/layout/left-middle-right';
 import {Route,Link} from "react-router-dom";
+import ComponentsTest from './js/pages/components-test/components';
 
-
-//渲染路由关系
+//渲染一级路由关系
+//todo
 function routerRender() {
     
 }
+//渲染二级路由关系
+//todo
+function routerSecRender() {
 
+}
 
 const Home = () => (
     <div>
@@ -40,6 +45,9 @@ const list = ({ match }) => (
                 <li>
                     <Link to={`${match.url}/three`}>three</Link>
                 </li>
+                <li>
+                    <Link to={`${match.url}/components`}>compoents-test</Link>
+                </li>
             </ul>
         </div>}
                    right={<div>
@@ -56,8 +64,10 @@ const list = ({ match }) => (
 //列表详情
 const listDetail = (match) => {
     console.log(match)
+    let listId = match.match.params.listId;
     return <div>
-        listDetail {match.match.params.listId}
+        listDetail {listId}
+        {listId==="components" && <ComponentsTest/>}
     </div>
 };
 const about = () => (
