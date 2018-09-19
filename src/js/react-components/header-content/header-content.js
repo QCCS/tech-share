@@ -61,7 +61,7 @@ const styles = theme => ({
         position: 'relative',
         margin: '0 auto',
         width: 400,
-        height: 500,
+        height: 400,
         textAlign: 'center'
     },
     paperInner: {
@@ -221,12 +221,14 @@ class HeaderContent extends React.Component {
                         </Toolbar>
                     </AppBar>
                     <List>
-                        <ListItem button onChange={this.handleChangePhone}>
+                        <ListItem button onClick={this.handleChangePhone}>
                             <ListItemText primary="Phone Login" secondary="zhouli"/>
+                            {checkedPhone+""}
                         </ListItem>
                         <Divider/>
-                        <ListItem button onChange={this.handleChangeEmail}>
+                        <ListItem button onClick={this.handleChangeEmail}>
                             <ListItemText primary="Email login" secondary="json119.com"/>
+                            {checkedEmail+""}
                         </ListItem>
                     </List>
 
