@@ -40,6 +40,8 @@ class LeftMiddleRight extends React.Component {
                     <ControlledExpansionPanels></ControlledExpansionPanels>
                 </appContext.Provider>
 
+                <br/>
+                <br/>
                 <appContextTwo.Provider value={{createContextTwo1: 'createContext3',createContextTwo2: 'createContext2'}}>
                     <SideNav></SideNav>
                 </appContextTwo.Provider>
