@@ -405,5 +405,52 @@ const appContext = React.createContext({
 便于理解单独一个分支安装react-redux
 ```
 git checkout -b share13
+npm install --save react-redux redux
 ```
 
+### store
+创建 store
+绑定 store  <Provider store={store}>
+
+---
+
+### action
+创建 action
+
+---
+
+### reducer
+编写 reducer
+
+---
+
+### 组件中使用
+导入相关action
+绑定属性
+绑定动作
+连接组件与redux
+
+
+## 创建一个 HideFooterAction
+
+
+最后注意：添加redux后路由监听失效
+const AppWrap = connect(mapStateToProps, mapDispatchToProps,
+    undefined,{pure:false})(App);
+
+---
+
+写几个配置文件，与命令
+```
+"dev": "NODE_ENV=dev webpack-dev-server --open",
+"prod": "NODE_ENV=prod webpack-dev-server --open",
+let env = process.env;
+console.log(env.NODE_ENV)
+```
+
+---
+
+异步请求数据
+```
+git checkout -b share14
+```

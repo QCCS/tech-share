@@ -89,7 +89,7 @@ class SideNavList extends React.Component {
 
                     <Collapse in={this.state.openList} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                        <Link exact to={`/list`} onClick={this.handleClickList}>
+                        <Link exact to={`/list`}>
                             <ListItem button className={classes.nested}>
                                 <ListItemIcon>
                                     <SendIcon/>

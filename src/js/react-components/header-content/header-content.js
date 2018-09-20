@@ -26,6 +26,8 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Slide from '@material-ui/core/Slide';
 import CloseIcon from '@material-ui/icons/Close';
+import {connect} from 'react-redux';
+import actions from '../../redux/action';
 
 import Paper from '@material-ui/core/Paper';
 
@@ -132,18 +134,23 @@ class HeaderContent extends React.Component {
     handleClose = () => {
         this.setState({openDialog: false});
     }
-
+    handleCloseLogout = () => {
+        this.setState({anchorEl: false});
+        this.props.onButtonHideClick();
+    }
     handleChangePhone = () => {
         this.setState({
             checkedPhone: true,
             checkedEmail: false
         });
+        this.props.onButtonShowClick();
     }
     handleChangeEmail = () => {
         this.setState({
             checkedPhone: false,
             checkedEmail: true
         });
+        this.props.onButtonHideClick();
     }
 
     render() {
@@ -161,7 +168,7 @@ class HeaderContent extends React.Component {
                 onClose={this.handleMenuClose}
             >
                 <MenuItem onClick={this.handleLogin}>Login</MenuItem>
-                <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+                <MenuItem onClick={this.handleCloseLogout}>Logout</MenuItem>
                 <MenuItem onClick={this.handleClose}>Profile</MenuItem>
             </Menu>
         );
@@ -292,5 +299,14 @@ class HeaderContent extends React.Component {
 HeaderContent.propTypes = {
     classes: PropTypes.object.isRequired,
 };
-
-export default withStyles(styles)(HeaderContent);
+function mapStateToProps(state) {
+    return {isHideFooter: state.isHideFooter}
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        onButtonHideClick: () => dispatch(actions.HideFooterAction),
+        onButtonShowClick: () => dispatch(actions.ShowFooterAction),
+    }
+}
+const HeaderContentWrap = connect(mapStateToProps, mapDispatchToProps)(HeaderContent);
+export default withStyles(styles)(HeaderContentWrap);

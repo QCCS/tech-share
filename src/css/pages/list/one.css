@@ -7,6 +7,8 @@
 }
 .components-md-wrap .nav-test{
     height: 80px;
+    background: gainsboro;
+    padding: 10px;
 }
 .components-md-wrap .table-test{
     height: 400px;
@@ -15,5 +17,5 @@
     height: 160px;
 }
 .components-md-wrap .menus-test{
-    height: 160px;
+    height: 200px;
 }

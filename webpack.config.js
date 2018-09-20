@@ -1,4 +1,29 @@
 const webpack = require("webpack");
+let env = process.env;
+console.log(env.NODE_ENV)
+let proxy = null;
+let proxyDev = {
+    '/api':{
+        target: "http://test.json119.com",
+        secure: true,
+        changeOrigin: true,
+        pathRewrite: { '^/api' : '' }
+    }
+}
+let proxyProd = {
+    '/api':{
+        target: "http://www.json119.com",
+        secure: true,
+        changeOrigin: true,
+        pathRewrite: { '^/api' : '' }
+    }
+}
+if(env.NODE_ENV==="dev"){
+    proxy = proxyDev;
+}else if(env.NODE_ENV==="prod"){
+    proxy = proxyProd;
+}
+
 module.exports = {
     entry: __dirname + '/src/index.js',//入口文件
     output: {
@@ -11,7 +36,9 @@ module.exports = {
         inline: true,//源文件改变时刷新页面
         hot: true,
         port: 8085//更改端口号，默认8080
+        ,proxy
     },
+    // devtool: 'cheap-module-eval-source-map',//好几种模式
     module: {
         rules: [
             {
