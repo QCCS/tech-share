@@ -453,4 +453,36 @@ console.log(env.NODE_ENV)
 异步请求数据
 ```
 git checkout -b share14
+npm install axios --save
+周下载量也是近200W
 ```
+
+```
+//实验性api有点坑 
+https://developer.mozilla.org/en-US/docs/Web/API/Body/body
+var url = "/api";
+    fetch(url, {
+        method: "",
+        headers: {
+        },
+        body:{}
+    })
+    .then(function (response) {
+        console.log(response)
+    })
+    .catch(function (err) {
+        console.log("Fetch错误:" + err);
+    });
+```
+
+axios 主要介绍点
+
+拦截器
+统一错误处理
+
+其他可以详细查看文档
+
+---
+
+
+

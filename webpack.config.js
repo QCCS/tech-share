@@ -2,6 +2,7 @@ const webpack = require("webpack");
 let env = process.env;
 console.log(env.NODE_ENV)
 let proxy = null;
+let devtool = null;
 let proxyDev = {
     '/api':{
         target: "http://test.json119.com",
@@ -20,8 +21,10 @@ let proxyProd = {
 }
 if(env.NODE_ENV==="dev"){
     proxy = proxyDev;
+    devtool = "cheap-module-eval-source-map";
 }else if(env.NODE_ENV==="prod"){
     proxy = proxyProd;
+    devtool = "cheap-module-eval-source-map";
 }
 
 module.exports = {
@@ -38,7 +41,7 @@ module.exports = {
         port: 8085//更改端口号，默认8080
         ,proxy
     },
-    // devtool: 'cheap-module-eval-source-map',//好几种模式
+    devtool,//好几种模式
     module: {
         rules: [
             {

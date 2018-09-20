@@ -11,11 +11,13 @@ import appContext from '../global-data/app-context';
 import appContextTwo from '../global-data/app-context-two';
 import {connect} from 'react-redux';
 import actions from '../redux/action';
+
 class LeftMiddleRight extends React.Component {
     constructor() {
         super();
-        this.state={
-            text:"Hello"
+        this.state = {
+            text: "Hello",
+            body: "json119"
         }
 
     }
@@ -34,6 +36,44 @@ class LeftMiddleRight extends React.Component {
             }
         }
     }
+
+    postJson119 = () => {
+        var url = "/api";
+        fetch(url, {
+            method: "post",
+            headers: {},
+            body: JSON.stringify({
+                "name": "zhouli",
+                "password": "123"
+            })
+        })
+            .then((response) => {
+                if (response.status == 200) {
+                    this.setState({
+                        body: response.body
+                    })
+                }
+            })
+            .catch(function (err) {
+                console.log("Fetch错误:" + err);
+            });
+    }
+    getJson119 = () => {
+        var url = "/api";
+        fetch(url, {
+            method: "get",
+            headers: {},
+        })
+            .then(response => response.body)
+            .then(data => {
+                this.setState({
+                    body: data.toString()
+                })
+            })
+            .catch(function (err) {
+                console.log("Fetch错误:" + err);
+            });
+    }
     render = () => {
         return ( <div className="left-middle-right-wrap">
 
@@ -45,6 +85,9 @@ class LeftMiddleRight extends React.Component {
                 <h1>{this.props.right}</h1>
                 <h1>{this.props.text}</h1>
                 <div onClick={this.props.onButtonClick}>print hello</div>
+
+                <div onClick={this.getJson119}>fetch get</div>
+                <div onClick={this.postJson119}>fetch post</div>
             </div>
 
 
@@ -62,11 +105,17 @@ class LeftMiddleRight extends React.Component {
                     <SideNav></SideNav>
                 </appContextTwo.Provider>
 
+                <div>
+                    <h1>fetch请求测试</h1>
+                    <div dangerouslySetInnerHTML={{__html: this.state.body}}></div>
+                </div>
+
             </div>
             <div className="clear"></div>
         </div> )
     }
 }
+
 LeftMiddleRight.contextTypes = {
     router: PropTypes.object,
     myContextData: PropTypes.object

@@ -10,6 +10,7 @@ import ComponentsMd from './js/pages/components-test/components-md';
 import SideNavList from './js/react-components/side-nav/side-nav-list';
 import MiniDrawer from './js/pages/components-test/mini-drawer';
 import ListOne from './js/pages/list/one';
+import ListTwo from './js/pages/list/two';
 //渲染路由关系
 function routerRender() {
     
@@ -47,6 +48,7 @@ const listDetail = (match) => {
     return <div>
         listDetail {match.match.params.listId}
         {listId==="one"&&<ListOne></ListOne>}
+        {listId==="two"&&<ListTwo></ListTwo>}
         {listId==="components-md"&&<ComponentsMd></ComponentsMd>}
     </div>
 };
