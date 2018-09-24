@@ -485,6 +485,35 @@ axios 主要介绍点
 ---
 
 然后简单讲前端部署
+```
 git checkout -b share15
 
+```
 
+前端都是静态文件
+可以使用nginx代理
+也可以放后端的静态目录
+
+nginx可以如下配置
+
+```
+server {
+    # 监听端口
+    listen 8119;
+    location / {
+        # 根目录
+        root path;
+        # 入口文件
+        index index.html;
+    }
+}
+```
+这样访问host:8119就可以访问到指定path文件了
+
+然后重启nginx
+```
+nginx -s reload
+```
+
+关于自动部署，后续考虑添加
+可以单独搞一个项目，做一些钩子函数
