@@ -5,7 +5,7 @@ let proxy = null;
 let devtool = null;
 let proxyDev = {
     '/api':{
-        target: "http://test.json119.com",
+        target: "http://share.json119.com",
         secure: true,
         changeOrigin: true,
         pathRewrite: { '^/api' : '' }
@@ -13,7 +13,7 @@ let proxyDev = {
 }
 let proxyProd = {
     '/api':{
-        target: "http://www.json119.com",
+        target: "http://share.json119.com",
         secure: true,
         changeOrigin: true,
         pathRewrite: { '^/api' : '' }

@@ -4,7 +4,7 @@
 import React from 'react';
 import '../../../css/pages/list/two.css';
 import { withStyles } from '@material-ui/core/styles';
-import { createFee,deleteFee,updateFee,getFee} from '../../service/api';
+import { createFee,deleteFee,updateFee,getFee,getFees} from '../../service/api';
 const styles = theme => ({
     root: {
         display: 'flex',
@@ -26,6 +26,9 @@ class ListOne extends React.Component {
         super();
         this.state = {
             value: 'recents',
+            updateId:0,
+            deleteId:0,
+            getId:0,
         };
 
     }
@@ -34,38 +37,68 @@ class ListOne extends React.Component {
 
 
     _createFee=()=>{
-        createFee()
+        let obj = {
+            "des":"第"+Math.random()*10000+"个费用",
+            "title":"test fee1",
+            "total":"12"+Math.random()*100,
+        }
+        createFee(obj)
             .then(res=>{
                 console.log(res)
             });
     }
 
     _updateFee=()=>{
-        updateFee()
+        updateFee(this.state.updateId)
             .then(res=>{
                 console.log(res)
             });
     }
 
+    updateIdChange=(e)=>{
+        this.setState({
+            updateId:e.target.value
+        })
+    }
     _getFee=()=>{
-        getFee()
+        getFee(this.state.getId)
         .then(res=>{
             console.log(res)
         });
     }
-    _deleteFee=()=>{
-        deleteFee()
+
+    getIdChange=(e)=>{
+        this.setState({
+            getId:e.target.value
+        })
+    }
+
+    _getFees=()=>{
+        getFees()
             .then(res=>{
                 console.log(res)
             });
     }
 
+    _deleteFee=()=>{
+        deleteFee(this.state.deleteId)
+            .then(res=>{
+                console.log(res)
+            });
+    }
+    deleteIdChange=(e)=>{
+        this.setState({
+            deleteId:e.target.value
+        })
+    }
+
     render = () => {
         return (<div className="components-md-wrap">
-            <div onClick={this._createFee}>post axios</div>
-            <div onClick={this._updateFee}>update axios</div>
-            <div onClick={this._getFee}>get axios</div>
-            <div onClick={this._deleteFee}>delete axios</div>
+            <div onClick={this._createFee}>post axios _createFee</div>
+            <div onClick={this._updateFee}>update axios _updateFee 输入要更新的id<input onChange={(e)=>{this.updateIdChange(e)}}/></div>
+            <div onClick={this._getFee}>get axios _getFee 输入要查询的id<input onChange={(e)=>{this.getIdChange(e)}}/> </div>
+            <div onClick={this._getFees}>get axios _getFees</div>
+            <div onClick={this._deleteFee}>delete axios _deleteFee 输入要删除的id<input onChange={(e)=>{this.deleteIdChange(e)}}/></div>
         </div> )
     }
 }

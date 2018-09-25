@@ -31,6 +31,9 @@ import actions from '../../redux/action';
 
 import Paper from '@material-ui/core/Paper';
 
+
+import {loginService} from '../../service/api';
+
 function Transition(props) {
     return <Slide direction="up" {...props} />;
 }
@@ -66,8 +69,7 @@ const styles = theme => ({
         height: 400,
         textAlign: 'center'
     },
-    paperInner: {
-    },
+    paperInner: {},
 
     inputRoot: {
         color: 'inherit',
@@ -104,7 +106,10 @@ class HeaderContent extends React.Component {
         mobileMoreAnchorEl: null,
         openDialog: false,
         checkedPhone: false,
-        checkedEmail: false
+        checkedEmail: false,
+
+        mobile: "",
+        password: "",
     };
 
     handleProfileMenuOpen = event => {
@@ -137,6 +142,7 @@ class HeaderContent extends React.Component {
     handleCloseLogout = () => {
         this.setState({anchorEl: false});
         this.props.onButtonHideClick();
+        this.loginOutAction()
     }
     handleChangePhone = () => {
         this.setState({
@@ -153,6 +159,37 @@ class HeaderContent extends React.Component {
         this.props.onButtonHideClick();
     }
 
+    onPhoneChange = (e) => {
+        console.log(e)
+        console.log(e.target.value)
+        this.setState({
+            mobile: e.target.value,
+        });
+    }
+    onPasswordChange = (e) => {
+        console.log(e)
+        console.log(e.target.value)
+        this.setState({
+            password: e.target.value,
+        });
+    }
+
+    //登陆
+    loginAction = () => {
+        let params = {
+            mobile:this.state.mobile,
+            password:this.state.password
+        }
+        loginService(params)
+            .then(res => {
+                console.log(res)
+                window.localStorage.setItem("authorization",res.data.data.access_token);
+            })
+    }
+    //退出
+    loginOutAction = () => {
+        window.localStorage.setItem("authorization",null);
+    }
     render() {
         const {anchorEl, mobileMoreAnchorEl, checkedPhone, checkedEmail} = this.state;
         const {classes} = this.props;
@@ -230,12 +267,12 @@ class HeaderContent extends React.Component {
                     <List>
                         <ListItem button onClick={this.handleChangePhone}>
                             <ListItemText primary="Phone Login" secondary="zhouli"/>
-                            {checkedPhone+""}
+                            {checkedPhone + ""}
                         </ListItem>
                         <Divider/>
                         <ListItem button onClick={this.handleChangeEmail}>
                             <ListItemText primary="Email login" secondary="json119.com"/>
-                            {checkedEmail+""}
+                            {checkedEmail + ""}
                         </ListItem>
                     </List>
 
@@ -243,6 +280,21 @@ class HeaderContent extends React.Component {
                     <Slide direction="up" in={checkedPhone} mountOnEnter unmountOnExit>
                         <Paper elevation={2} className={classes.paper}>
                             <div className={classes.paperInner}>Phone</div>
+
+                            <div>
+                                <h1>mobile</h1>
+                                <input onChange={(e) => {
+                                    this.onPhoneChange(e)
+                                }}/>
+                            </div>
+                            <div>
+                                <h1>password</h1>
+                                <input onChange={(e) => {
+                                    this.onPasswordChange(e)
+                                }}/>
+                            </div>
+
+                            <div onClick={this.loginAction}>登陆</div>
                         </Paper>
                     </Slide>
                     <Slide direction="up" in={checkedEmail} mountOnEnter unmountOnExit>
@@ -299,14 +351,17 @@ class HeaderContent extends React.Component {
 HeaderContent.propTypes = {
     classes: PropTypes.object.isRequired,
 };
+
 function mapStateToProps(state) {
     return {isHideFooter: state.isHideFooter}
 }
+
 function mapDispatchToProps(dispatch) {
     return {
         onButtonHideClick: () => dispatch(actions.HideFooterAction),
         onButtonShowClick: () => dispatch(actions.ShowFooterAction),
     }
 }
+
 const HeaderContentWrap = connect(mapStateToProps, mapDispatchToProps)(HeaderContent);
 export default withStyles(styles)(HeaderContentWrap);
