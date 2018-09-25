@@ -49,7 +49,13 @@ class ListOne extends React.Component {
     }
 
     _updateFee=()=>{
-        updateFee(this.state.updateId)
+        let obj = {
+            "des":"第"+Math.random()*10000+"个费用",
+            "title":"test fee1",
+            "id":this.state.updateId,
+            "total":"12"+Math.random()*100,
+        }
+        updateFee(obj)
             .then(res=>{
                 console.log(res)
             });
