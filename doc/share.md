@@ -537,3 +537,43 @@ git checkout -b share16
 git checkout -b share17
 npm i --save-dev compression-webpack-plugin
 ```
+添加 webpack 插件配置
+```
+new CompressionWebpackPlugin({
+            filename: '[path].gz[query]',// 目标文件名,1.x 这个配置项为asset
+            algorithm: 'gzip',// 使用gzip压缩
+            test: /\.js$|\.html$/,
+            threshold: 10240,// 资源文件大于10240B=10kB时会被压缩
+            minRatio: 0.8 // 最小压缩比达到0.8时才会被压缩
+        })
+```
+
+nginx
+```
+server {
+    listen 8117;
+
+    gzip on;
+    gzip_static on;
+    gzip_min_length 1k;
+    gzip_buffers 4 16k;
+    gzip_comp_level 5;
+    gzip_types text/plain application/javascript application/x-javascript text/css text/javascript;
+    gzip_vary on;
+    gzip_disable "MSIE [1-6]\.";
+
+    location / {
+        root /root/NODE/for-share/tech-share/dist-share17;
+        index index.html;
+    }
+
+}
+```
+
+然后对比
+
+share13 没压缩 4M
+
+share16 没压缩 20M
+
+share17 压缩   2M
