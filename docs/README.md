@@ -1,5 +1,16 @@
-# grunt
+# 从0到1搭建前端脚手架
 
+此文档只是对搭建脚手架关键步骤进行说明，
+详细步骤的代码，可以clone本项目，从不同的分支依次看。
+从master 到 share1 ---- share18 共19个分支，依次添加代码的。
+
+代码地址：
+```
+https://github.com/QCCS/tech-share.git
+```
+
+
+# web开发1.0 
 ```
 git checkout share
 ```
@@ -8,22 +19,22 @@ git checkout share
 前端根据设计图，把页面写好，给后端开发
 后端把页面需要的数据直接填在页面里面
 
----
-
-即使是这种方式，如果不用npm安装react
+这种方式，如果我们不用npm安装react
 可以用script标签直接引入，
 ```
 git checkout share1
 ```
-
+## script 标签引入react
 引入react,然后写一个组件，没有问题
 
 vue,angularjs一样可以，不做师范，可以到官方网站查看
 
----
 
 这样开发之后，点击查看网页源码，写的源码全部被看见，加载也大
 这样可以引入 gulp，grunt打包工具，
+# grunt
+
+## grunt 压缩代码
 grunt ,gulp 出来很久了，在webpack之前，但是目前还有很多项目在用
 ```
 git checkout share2
@@ -59,7 +70,6 @@ gulp与grunt写法不大一样，功能差不多，
 
 官方网站可以用这种方式
 
----
 
 # 安装babel
 
@@ -197,11 +207,13 @@ npm i -save react react-dom
 
 ## webpack loader
 
---
 但是还没法用模块加载的方式写样式
+```
 import ‘./css/index.css’
 
-一样依赖loader
+```
+
+样依赖loader
 ```
 npm install --save-dev css-loader
 ```
@@ -223,7 +235,10 @@ npm install --save-dev file-loader
 ```
 各种各样的loader
 可以到官方网站查看，安装与配置方式
+```
 https://www.webpackjs.com/loaders/file-loader/
+
+```
 
 sass，scss，less，stylus等等loader就不这里安装了，
 之后需要就安装
@@ -258,11 +273,14 @@ node_modules/.bin/webpack-dev-server
   }
 ```
 自此安装了
+```
 webpack
 babel-loader es6,es7,jsx-react
 css-loader
 file-loader
 devServer
+```
+
 简单项目开发就可以直接
 
 然后稍微整理为一个简单的webpack+es6+react+css+devServer的开发脚手架
@@ -284,7 +302,10 @@ git checkout -b share8
 首页，列表，详情，关于
 react-router 4.x已经拆分为几个包其中react-router-dom 可以设置路由了
 文档
+```
 https://reacttraining.com/react-router/web/example/basic
+
+```
 ```
 npm install --save react-router-dom 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -297,15 +318,24 @@ router安装好了
 
 页面很难看，css又懒得写，安装UI框架
 安装ant-design
+```
 git checkout -b share9
+
+```
 
 
 
 # 安装materail-design
-
+```
 git checkout -b share10
+```
 materail-design react版本可能版本比较多，
-https://material-ui.com/这个网站介绍比较全
+这个网站介绍比较全
+```
+https://material-ui.com/
+
+```
+安装
 
 ```
 npm install @material-ui/core --save
@@ -351,7 +381,6 @@ git checkout -b share12
 ```
 先看看react 16跨组件通信context，与全局状态管理
 新版本的React context使用了Provider和Customer模式，和redux-react的模式非常像。
-
 
 
 父组件 提供者
@@ -502,7 +531,6 @@ axios 主要介绍点
 然后简单讲前端部署
 ```
 git checkout -b share15
-
 
 ```
 # 部署，nginx

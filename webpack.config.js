@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const copyWebpackPlugin = require('copy-webpack-plugin');
 let env = process.env;
 console.log(env.NODE_ENV)
 let proxy = null;
@@ -77,6 +78,10 @@ module.exports = {
             test: /\.js$|\.html$/,
             threshold: 10240,// 资源文件大于10240B=10kB时会被压缩
             minRatio: 0.8 // 最小压缩比达到0.8时才会被压缩
-        })
+        }),
+        new copyWebpackPlugin([{
+            from: __dirname +'/docs',//打包的静态资源目录地址
+            to:'./docs' //打包到 dist 下面的public
+        }]),
     ]
 }
