@@ -1,8 +1,8 @@
+# grunt
 
 ```
 git checkout share
 ```
-#grunt
 之前这种开发方式一般适用于前后端一起开发
 比如spring mvc
 前端根据设计图，把页面写好，给后端开发
@@ -61,6 +61,8 @@ gulp与grunt写法不大一样，功能差不多，
 
 ---
 
+# 安装babel
+
 添加.gitignore文件，不然把不需要上传的文件上传了，浪费上传时间
 
 上面react文件没有压缩，是因为依赖babel编译
@@ -77,7 +79,6 @@ webpack集成了dev-server可以做到这一点
 ```
 git checkout share3
 ```
-
 
 ```
 npm install -g babel-cli
@@ -128,19 +129,18 @@ npm install --save-dev babel-preset-react
 加入这样配置之后，就可以用jsx语法写，babel依然可以编译为es5
 
 
-#这个地方就要注意了
+es6 es2015 es8 es2017
 babel编译是编译，就是把es6，es7转换为es5，
 但是有一些默认的语法是不会编译的 比如import
 就直接编译为require，这样浏览器是不会认识的，
 当然可以解决，引入比较老的babel包，就可以直接编译为浏览器认识的语法
 也可以引入打包工具，webpack；
 
-安装webpack
+# 安装webpack
+```
 git checkout share4
-
-
 npm install --save-dev webpack
-
+```
 
 添加 webpack.config.js，配置文件
 输入命令,会自动找到配置文件执行，根据版本不一样，会提示安装webpack-cli命令行工具
@@ -151,7 +151,6 @@ webpack
 只是安装了webpack ,没有安装react等相关依赖，可以先把index.js其他语言注释
 运行命令，就可以打包成功
 
-----
 
 然后把react jsx语法写入，webpack就不认识了，就需要配置loader
 怎么配置呢，官网看看
@@ -178,14 +177,13 @@ module: {
 ```
 
 
-
-
 由于之前一直没有安装react，react-dom这里就要报找不到模块
 ```
 import React from 'react';
 import ReactDOM from 'react-dom';
 ```
 
+# 安装react
 
 这里放下一个分支安装模块
 
@@ -196,6 +194,8 @@ npm i -save react react-dom
 ```
 为了能讲明白这些，我是分很多步骤来操作的
 安装之后就可以用webpack打包了
+
+## webpack loader
 
 --
 但是还没法用模块加载的方式写样式
@@ -232,6 +232,8 @@ sass，scss，less，stylus等等loader就不这里安装了，
 但是到这一步，每次打包完，刷新一下浏览器，比较麻烦
 安装一下devserver
 实时刷新浏览器
+
+## 安装webpack-dev-server 
 
 ```
 git checkout -b share6
@@ -276,23 +278,31 @@ git checkout -b share7
 git checkout -b share8
 
 ```
+# 安装react-router-dom
 
 要在header上添加三个路由
 首页，列表，详情，关于
 react-router 4.x已经拆分为几个包其中react-router-dom 可以设置路由了
 文档
 https://reacttraining.com/react-router/web/example/basic
-
+```
 npm install --save react-router-dom 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+```
+
 router安装好了
+
+# 安装ant-design
 
 页面很难看，css又懒得写，安装UI框架
 安装ant-design
 git checkout -b share9
 
-安装materail-design
+
+
+# 安装materail-design
+
 git checkout -b share10
 materail-design react版本可能版本比较多，
 https://material-ui.com/这个网站介绍比较全
@@ -331,7 +341,9 @@ git checkout -b share11
 左侧导航
 header
 
----
+# 数据管理
+
+## context 提供者与消费者
 
 改造完成，安装redux
 ```
@@ -340,7 +352,7 @@ git checkout -b share12
 先看看react 16跨组件通信context，与全局状态管理
 新版本的React context使用了Provider和Customer模式，和redux-react的模式非常像。
 
-#context 提供者与消费者
+
 
 父组件 提供者
 // 声明要提供到Context的对象属性
@@ -366,8 +378,7 @@ lmrContextData: PropTypes.object,
 这样子，子组件就拿到了父组件，lmrContextData
 父组件没有定义这个，子组件获取不到，就是undefined
 
----
-
+ 
 新增的react中，我创建一个应用的上下文数据
 ```
 //注意最好不要多次创建（但是可以），不然在消费的时候很难找到 appContext 对应的值
@@ -401,9 +412,12 @@ const appContext = React.createContext({
 可以把context中的属性，与提供属性值的函数传递到子组件，
 这样可以自己调用子组件，就会改变上下文的值
 以上主要讲解新版context
-----
 
-便于理解单独一个分支安装react-redux
+
+## react-redux
+
+便于理解单独一个分支
+安装react-redux
 ```
 git checkout -b share13
 npm install --save react-redux redux
@@ -432,14 +446,13 @@ npm install --save react-redux redux
 连接组件与redux
 
 
-## 创建一个 HideFooterAction
+### 创建一个 HideFooterAction
 
 
 最后注意：添加redux后路由监听失效
 const AppWrap = connect(mapStateToProps, mapDispatchToProps,
     undefined,{pure:false})(App);
 
----
 
 写几个配置文件，与命令
 ```
@@ -449,7 +462,7 @@ let env = process.env;
 console.log(env.NODE_ENV)
 ```
 
----
+# 安装axios
 
 异步请求数据
 ```
@@ -492,9 +505,9 @@ git checkout -b share15
 
 
 ```
-
+# 部署，nginx
 前端都是静态文件
-可以使用nginx代理
+可以使用 nginx 代理
 也可以放后端的静态目录
 
 nginx可以如下配置
@@ -521,10 +534,6 @@ nginx -s reload
 关于自动部署，后续考虑添加
 可以单独搞一个项目，做一些钩子函数
 
-
----
-
-
 联调
 git checkout -b share16
 
@@ -532,8 +541,7 @@ git checkout -b share16
 登陆
 测试费用的curd
 
----
-开启gzip
+# 开启gzip
 ```
 git checkout -b share17
 npm i --save-dev compression-webpack-plugin
@@ -579,11 +587,9 @@ share16 没压缩 20M
 
 share17 压缩   2M
 
-
-添加文档工具
-
+# 添加文档工具
+```
 npm i docsify-cli -g
-
 docsify init ./docs
-
 docsify serve docs
+```
